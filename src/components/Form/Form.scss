@@ -1,10 +1,15 @@
 @import '../../styles/base.scss';
 
+.form-wrapper {
+  padding-bottom: 4px;
+  border-bottom: 1px solid $section-divider-color;
+}
 .form {
   width: 502px;
   padding: 10px;
-  outline: 1px solid orange;
+  /* outline: 1px solid orange; */
 }
+
 .form__inputs-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -67,6 +72,7 @@
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;
+  text-transform: uppercase;
 }
 
 .form__btn_left {

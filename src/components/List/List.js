@@ -13,7 +13,7 @@ export default function List() {
         <ul className="bike-list">
           {bikesDatabase.map(bike => {
             return (
-              <li key={bike.id}>
+              <li className="bike-list__element" key={bike.id}>
                 <Bike bikeInfo={bike} />
               </li>
             );
@@ -21,7 +21,7 @@ export default function List() {
         </ul>
       ) : (
         <p className="bike-list_empty">
-          Your bike garage is empty! Please add one via form above
+          Your bike garage is empty! Please add one via form in the right!
         </p>
       )}
     </section>

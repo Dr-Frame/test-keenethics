@@ -1,0 +1,22 @@
+@import '../../styles/base.scss';
+
+.statistic__inner {
+  padding: 10px;
+  color: $main-text-color;
+}
+.statistic__title {
+  margin-bottom: 5px;
+  font-size: 18px;
+  line-height: 28px;
+  text-transform: uppercase;
+}
+
+.statistic__item {
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.statistic__item span {
+  font-weight: 700;
+}

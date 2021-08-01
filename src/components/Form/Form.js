@@ -1,16 +1,10 @@
 import './Form.scss';
 import { useForm } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message';
 import { useDispatch, useSelector } from 'react-redux';
 import bikesAction from '../../redux/bikes/bikes-action';
 import bikesSelectors from '../../redux/bikes/bikes-selectors';
 import { STATUS_TYPES } from '../../constants/statusTypes';
-
-const inputMessage = {
-  requiredMessage: 'This fild is required!',
-  minLengthErrorMessage: 'This field must exceed 4 characters',
-  numberOnlyErrorMessage: 'This input is number only',
-};
+import { INPUT_ERROR_MESSAGE } from '../../constants/inputErrorMessages';
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -20,13 +14,20 @@ export default function Form() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
-    criteriaMode: 'all',
-  });
+  } = useForm();
 
   const bikesDatabase = useSelector(bikesSelectors.getBikesDatabase);
-  const { requiredMessage, minLengthErrorMessage, numberOnlyErrorMessage } =
-    inputMessage;
+  const {
+    IS_REQUIRED,
+    MIN_LENGTH,
+    IS_EXIST,
+    ID_MIN_LENGTH,
+    ID_MAX_LENGTH,
+    MAX_WHEEL_SIZE,
+    MIN_WHEEL_SIZE,
+    MAX_WHEEL_SIZE_EXCEED,
+    MIN_WHEEL_SIZE_EXCEED,
+  } = INPUT_ERROR_MESSAGE;
 
   const onSubmit = data => {
     data.status = STATUS_TYPES.AVAILABLE;
@@ -47,18 +48,8 @@ export default function Form() {
     return idArr.includes(id) === false;
   };
 
-  const handleErrors = messages => {
-    return messages
-      ? Object.entries(messages).map(([type, message]) => (
-          <p className="form__input-error" key={type}>
-            {message}
-          </p>
-        ))
-      : null;
-  };
-
   return (
-    <section>
+    <div className="form-wrapper">
       <form
         id="form"
         className="form"
@@ -71,59 +62,50 @@ export default function Form() {
               <input
                 type="text"
                 {...register('name', {
-                  required: requiredMessage,
+                  required: IS_REQUIRED,
                   minLength: {
                     value: 5,
-                    message: minLengthErrorMessage,
+                    message: MIN_LENGTH,
                   },
                 })}
                 placeholder="Name"
                 className="form__input form__input_with-margin"
               />
-              <ErrorMessage
-                errors={errors}
-                name="name"
-                render={({ messages }) => handleErrors(messages)}
-              />
+              {errors.name && (
+                <p className="form__input-error">{errors.name.message}</p>
+              )}
             </div>
 
             <div className="form__item">
               <input
                 type="text"
                 {...register('color', {
-                  required: requiredMessage,
+                  required: IS_REQUIRED,
                   minLength: {
                     value: 5,
-                    message: minLengthErrorMessage,
+                    message: MIN_LENGTH,
                   },
                 })}
                 placeholder="Color"
                 className="form__input"
               />
-              <ErrorMessage
-                errors={errors}
-                name="color"
-                render={({ messages }) => handleErrors(messages)}
-              />
+              {errors.color && (
+                <p className="form__input-error">{errors.color.message}</p>
+              )}
             </div>
 
             <div className="form__item">
               <input
+                type="number"
                 {...register('price', {
-                  required: requiredMessage,
-                  pattern: {
-                    value: /^\d+$/,
-                    message: numberOnlyErrorMessage,
-                  },
+                  required: IS_REQUIRED,
                 })}
                 placeholder="Price"
                 className="form__input form__input_with-margin"
               />
-              <ErrorMessage
-                errors={errors}
-                name="price"
-                render={({ messages }) => handleErrors(messages)}
-              />
+              {errors.price && (
+                <p className="form__input-error">{errors.price.message}</p>
+              )}
             </div>
           </div>
 
@@ -132,48 +114,54 @@ export default function Form() {
               <input
                 type="text"
                 {...register('type', {
-                  required: requiredMessage,
+                  required: IS_REQUIRED,
                   minLength: {
                     value: 5,
-                    message: minLengthErrorMessage,
+                    message: MIN_LENGTH,
                   },
                 })}
                 placeholder="Type"
                 className="form__input"
               />
-              <ErrorMessage
-                errors={errors}
-                name="type"
-                render={({ messages }) => handleErrors(messages)}
-              />
+              {errors.type && (
+                <p className="form__input-error">{errors.type.message}</p>
+              )}
             </div>
 
             <div className="form__item">
               <input
+                type="number"
                 {...register('size', {
-                  required: requiredMessage,
-                  pattern: {
-                    value: /^\d+$/,
-                    message: numberOnlyErrorMessage,
+                  required: IS_REQUIRED,
+                  max: {
+                    value: MAX_WHEEL_SIZE,
+                    message: MAX_WHEEL_SIZE_EXCEED,
+                  },
+                  min: {
+                    value: MIN_WHEEL_SIZE,
+                    message: MIN_WHEEL_SIZE_EXCEED,
                   },
                 })}
                 placeholder="Wheel size"
                 className="form__input form__input_with-margin"
               />
-              <ErrorMessage
-                errors={errors}
-                name="size"
-                render={({ messages }) => handleErrors(messages)}
-              />
+              {errors.size && (
+                <p className="form__input-error">{errors.size.message}</p>
+              )}
             </div>
 
             <div className="form__item">
               <input
+                type="number"
                 {...register('id', {
-                  required: requiredMessage,
-                  pattern: {
-                    value: /^\d+$/,
-                    message: numberOnlyErrorMessage,
+                  required: IS_REQUIRED,
+                  minLength: {
+                    value: 8,
+                    message: ID_MIN_LENGTH,
+                  },
+                  maxLength: {
+                    value: 8,
+                    message: ID_MAX_LENGTH,
                   },
                   validate: isIdUnique,
                 })}
@@ -182,13 +170,11 @@ export default function Form() {
               />
 
               {errors.id && errors.id.type === 'validate' && (
-                <p className="form__input-error">This id is already exsist</p>
+                <p className="form__input-error">{IS_EXIST}</p>
               )}
-              <ErrorMessage
-                errors={errors}
-                name="id"
-                render={({ messages }) => handleErrors(messages)}
-              />
+              {errors.id && (
+                <p className="form__input-error">{errors.id.message}</p>
+              )}
             </div>
           </div>
 
@@ -196,20 +182,18 @@ export default function Form() {
             <input
               type="text"
               {...register('description', {
-                required: requiredMessage,
+                required: IS_REQUIRED,
                 minLength: {
                   value: 5,
-                  message: minLengthErrorMessage,
+                  message: MIN_LENGTH,
                 },
               })}
               placeholder="Description"
               className="form__input form__input_large"
             />
-            <ErrorMessage
-              errors={errors}
-              name="description"
-              render={({ messages }) => handleErrors(messages)}
-            />
+            {errors.description && (
+              <p className="form__input-error">{errors.description.message}</p>
+            )}
           </div>
         </div>
         <button type="submit" className="form__btn form__btn_left">
@@ -219,6 +203,6 @@ export default function Form() {
           Clear
         </button>
       </form>
-    </section>
+    </div>
   );
 }

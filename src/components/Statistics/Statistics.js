@@ -42,7 +42,10 @@ export default function Statistics() {
           </li>
           <li className="statistic__item">
             Average bike cost:{' '}
-            <span>{getAvaragePrice(bikesDatabase)} UAH/hr</span>
+            <span>
+              {bikesDatabase.length === 0 ? 0 : getAvaragePrice(bikesDatabase)}{' '}
+            </span>
+            UAH/hr.
           </li>
         </ul>
       </div>

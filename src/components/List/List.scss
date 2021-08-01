@@ -1,0 +1,21 @@
+@import '../../styles/base.scss';
+
+.bikes-info {
+  width: 654px;
+  padding: 9px;
+  height: calc(100vh - 84px);
+  overflow-y: scroll;
+  border-right: 1px solid $section-divider-color;
+}
+.bike-list__element {
+  margin-bottom: 12px;
+}
+.bike-list__element:last-child {
+  margin-bottom: 0;
+}
+
+.bike-list_empty {
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+}
