@@ -1,0 +1,74 @@
+@import '../../styles/base.scss';
+
+.bike-list__item {
+  position: relative;
+  width: 618px;
+  margin-bottom: 12px;
+
+  padding: 12px 18px;
+
+  background-color: $main-background-color;
+  border: 2px solid #6fcf97;
+  border-radius: 10px;
+}
+
+.bike-list__item_available {
+  border: 2px solid $bike-available-border-color;
+}
+.bike-list__item_busy {
+  border: 2px solid $bike-busy-border-color;
+}
+.bike-list__item_unavailable {
+  border: 2px solid $bike-unavailable-border-color;
+  opacity: 0.5;
+}
+
+.bike-list__item__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: $bike-card-text-color;
+}
+
+.bike-list__item__text span {
+  font-weight: 700;
+}
+
+.bike-list__item__id {
+  font-size: 8px;
+  line-height: 13px;
+  color: $secondary-text-color;
+}
+
+.bike-list__item__status-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.bike-list__item__select {
+  margin-left: 18px;
+  font-size: 14px;
+  text-transform: unset;
+  border: none;
+  background-color: inherit;
+}
+
+.bike-list__item__price {
+  margin-left: auto;
+  font-size: 24px;
+  line-height: 24px;
+  color: $main-text-color;
+}
+
+.bike-list__item__btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  font-size: 18px;
+  line-height: 12px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
