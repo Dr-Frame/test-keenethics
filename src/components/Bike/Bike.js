@@ -54,28 +54,7 @@ export default function Bike({ bikeInfo }) {
           {Number(price).toFixed(2)} UAH/hr.
         </p>
       </div>
-
       <CloseBtn deleteBike={deleteBike} />
-      {/* <button
-        className="bike-list__item__btn"
-        type="button"
-        onClick={deleteBike}
-      >
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          fill="#000000"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9 9L1 1M9 1L1 9"
-            stroke="black"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
-      </button> */}
     </div>
   );
 }

@@ -48,6 +48,7 @@
   border-radius: 5px;
 
   @extend %input-text;
+  color: $main-text-color;
 }
 
 .form__input::placeholder {
@@ -73,8 +74,9 @@
   line-height: 22px;
   font-weight: 400;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
-.form__btn_left {
+.form__btn_save {
   margin-right: 11px;
 }

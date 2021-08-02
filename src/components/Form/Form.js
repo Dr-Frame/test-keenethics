@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import bikesAction from '../../redux/bikes/bikes-action';
 import bikesSelectors from '../../redux/bikes/bikes-selectors';
 import { STATUS_TYPES } from '../../constants/statusTypes';
-import { INPUT_ERROR_MESSAGE } from '../../constants/inputErrorMessages';
+import { INPUT_ERROR_MESSAGES } from '../../constants/inputErrorMessages';
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export default function Form() {
     MIN_WHEEL_SIZE,
     MAX_WHEEL_SIZE_EXCEED,
     MIN_WHEEL_SIZE_EXCEED,
-  } = INPUT_ERROR_MESSAGE;
+  } = INPUT_ERROR_MESSAGES;
 
   const onSubmit = data => {
     data.status = STATUS_TYPES.AVAILABLE;
@@ -165,7 +165,7 @@ export default function Form() {
                   },
                   validate: isIdUnique,
                 })}
-                placeholder="ID (slug):xxxxxxxxxx"
+                placeholder="ID (slug):xxxxxxxx"
                 className="form__input"
               />
 
@@ -196,7 +196,7 @@ export default function Form() {
             )}
           </div>
         </div>
-        <button type="submit" className="form__btn form__btn_left">
+        <button type="submit" className="form__btn form__btn_save">
           Save
         </button>
         <button type="button" onClick={handleReset} className="form__btn">

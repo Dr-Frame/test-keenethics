@@ -1,4 +1,4 @@
-export const INPUT_ERROR_MESSAGE = {
+export const INPUT_ERROR_MESSAGES = {
   IS_REQUIRED: 'This fild is required!',
   MIN_LENGTH: 'This field must exceed 4 characters',
   IS_EXIST: 'This id is already exsist',
