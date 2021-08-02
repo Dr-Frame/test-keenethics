@@ -5,6 +5,7 @@ import bikesAction from '../../redux/bikes/bikes-action';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { STATUS_TYPES } from '../../constants/statusTypes';
+import CloseBtn from '../CloseBtn';
 
 export default function Bike({ bikeInfo }) {
   const dispatch = useDispatch();
@@ -54,13 +55,27 @@ export default function Bike({ bikeInfo }) {
         </p>
       </div>
 
-      <button
+      <CloseBtn deleteBike={deleteBike} />
+      {/* <button
         className="bike-list__item__btn"
         type="button"
         onClick={deleteBike}
       >
-        x
-      </button>
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 10 10"
+          fill="#000000"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 9L1 1M9 1L1 9"
+            stroke="black"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      </button> */}
     </div>
   );
 }
