@@ -8,4 +8,5 @@ export const INPUT_ERROR_MESSAGES = {
   MIN_WHEEL_SIZE: 12,
   MAX_WHEEL_SIZE_EXCEED: `Wheel size cant be more than 29`,
   MIN_WHEEL_SIZE_EXCEED: `Wheel size cant be more than 12`,
+  ONLY_CHARACTERS: 'Alphabetical characters and numbers only',
 };

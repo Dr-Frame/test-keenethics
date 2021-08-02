@@ -27,6 +27,7 @@ export default function Form() {
     MIN_WHEEL_SIZE,
     MAX_WHEEL_SIZE_EXCEED,
     MIN_WHEEL_SIZE_EXCEED,
+    ONLY_CHARACTERS,
   } = INPUT_ERROR_MESSAGES;
 
   const onSubmit = data => {
@@ -67,6 +68,10 @@ export default function Form() {
                     value: 5,
                     message: MIN_LENGTH,
                   },
+                  pattern: {
+                    value: /^[a-zA-Z0-9]*$/i,
+                    message: ONLY_CHARACTERS,
+                  },
                 })}
                 placeholder="Name"
                 className="form__input form__input_with-margin"
@@ -84,6 +89,10 @@ export default function Form() {
                   minLength: {
                     value: 5,
                     message: MIN_LENGTH,
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z0-9]*$/i,
+                    message: ONLY_CHARACTERS,
                   },
                 })}
                 placeholder="Color"
@@ -118,6 +127,10 @@ export default function Form() {
                   minLength: {
                     value: 5,
                     message: MIN_LENGTH,
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z0-9]*$/i,
+                    message: ONLY_CHARACTERS,
                   },
                 })}
                 placeholder="Type"
