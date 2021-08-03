@@ -12,6 +12,7 @@
     "husky": "^7.0.1",
     "lint-staged": "^11.1.1",
     "modern-normalize": "^1.1.0",
+    "netlify-cli": "^5.4.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.12.1",
@@ -27,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": [
