@@ -20,9 +20,11 @@ export default function Form() {
   const {
     IS_REQUIRED,
     MIN_LENGTH,
+    MIN_LENGTH_MESSAGE,
     IS_EXIST,
     ID_MIN_LENGTH,
-    ID_MAX_LENGTH,
+    ID_MIN_LENGTH_MESSAGE,
+    ID_MAX_LENGTH_MESSAGE,
     MAX_WHEEL_SIZE,
     MIN_WHEEL_SIZE,
     MAX_WHEEL_SIZE_EXCEED,
@@ -65,8 +67,8 @@ export default function Form() {
                 {...register('name', {
                   required: IS_REQUIRED,
                   minLength: {
-                    value: 5,
-                    message: MIN_LENGTH,
+                    value: MIN_LENGTH,
+                    message: MIN_LENGTH_MESSAGE,
                   },
                   pattern: {
                     value: /^[a-zA-Z0-9]*$/i,
@@ -87,8 +89,8 @@ export default function Form() {
                 {...register('color', {
                   required: IS_REQUIRED,
                   minLength: {
-                    value: 5,
-                    message: MIN_LENGTH,
+                    value: MIN_LENGTH,
+                    message: MIN_LENGTH_MESSAGE,
                   },
                   pattern: {
                     value: /^[a-zA-Z0-9]*$/i,
@@ -125,8 +127,8 @@ export default function Form() {
                 {...register('type', {
                   required: IS_REQUIRED,
                   minLength: {
-                    value: 5,
-                    message: MIN_LENGTH,
+                    value: MIN_LENGTH,
+                    message: MIN_LENGTH_MESSAGE,
                   },
                   pattern: {
                     value: /^[a-zA-Z0-9]*$/i,
@@ -169,12 +171,12 @@ export default function Form() {
                 {...register('id', {
                   required: IS_REQUIRED,
                   minLength: {
-                    value: 8,
-                    message: ID_MIN_LENGTH,
+                    value: ID_MIN_LENGTH,
+                    message: ID_MIN_LENGTH_MESSAGE,
                   },
                   maxLength: {
-                    value: 8,
-                    message: ID_MAX_LENGTH,
+                    value: ID_MIN_LENGTH,
+                    message: ID_MAX_LENGTH_MESSAGE,
                   },
                   validate: isIdUnique,
                 })}
@@ -197,8 +199,8 @@ export default function Form() {
               {...register('description', {
                 required: IS_REQUIRED,
                 minLength: {
-                  value: 5,
-                  message: MIN_LENGTH,
+                  value: MIN_LENGTH,
+                  message: MIN_LENGTH_MESSAGE,
                 },
               })}
               placeholder="Description"
