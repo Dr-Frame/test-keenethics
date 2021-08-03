@@ -7,14 +7,15 @@
   overflow-y: scroll;
   border-right: 1px solid $section-divider-color;
 }
-.bike-list__element {
+
+.bike-list__item {
   margin-bottom: 12px;
 }
-.bike-list__element:last-child {
+.bike-list__item:last-child {
   margin-bottom: 0;
 }
 
-.bike-list_empty {
+.bike-list--empty {
   font-weight: 700;
   font-size: 18px;
   text-align: center;

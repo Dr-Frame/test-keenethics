@@ -58,7 +58,7 @@ export default function Form() {
         autoComplete="off"
       >
         <div className="form__inputs-wrapper">
-          <div className="form__inputs-wrapper_left">
+          <div className="form__inputs-wrapper--left">
             <div className="form__item">
               <input
                 type="text"
@@ -74,7 +74,7 @@ export default function Form() {
                   },
                 })}
                 placeholder="Name"
-                className="form__input form__input_with-margin"
+                className="form__input form__input--with-margin"
               />
               {errors.name && (
                 <p className="form__input-error">{errors.name.message}</p>
@@ -110,7 +110,7 @@ export default function Form() {
                   required: IS_REQUIRED,
                 })}
                 placeholder="Price"
-                className="form__input form__input_with-margin"
+                className="form__input form__input--with-margin"
               />
               {errors.price && (
                 <p className="form__input-error">{errors.price.message}</p>
@@ -118,7 +118,7 @@ export default function Form() {
             </div>
           </div>
 
-          <div className="form__inputs-wrapper_right">
+          <div className="form__inputs-wrapper--right">
             <div className="form__item">
               <input
                 type="text"
@@ -156,7 +156,7 @@ export default function Form() {
                   },
                 })}
                 placeholder="Wheel size"
-                className="form__input form__input_with-margin"
+                className="form__input form__input--with-margin"
               />
               {errors.size && (
                 <p className="form__input-error">{errors.size.message}</p>
@@ -202,14 +202,14 @@ export default function Form() {
                 },
               })}
               placeholder="Description"
-              className="form__input form__input_large"
+              className="form__input form__input--large"
             />
             {errors.description && (
               <p className="form__input-error">{errors.description.message}</p>
             )}
           </div>
         </div>
-        <button type="submit" className="form__btn form__btn_save">
+        <button type="submit" className="form__btn form__btn--save">
           Save
         </button>
         <button type="button" onClick={handleReset} className="form__btn">

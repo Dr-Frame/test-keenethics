@@ -44,7 +44,7 @@ export default function Statistics() {
             Average bike cost:{' '}
             <span>
               {bikesDatabase.length === 0
-                ? Number(0).toFixed(2)
+                ? '0.00'
                 : getAvaragePrice(bikesDatabase)}{' '}
             </span>
             UAH/hr.

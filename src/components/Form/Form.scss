@@ -7,7 +7,6 @@
 .form {
   width: 502px;
   padding: 10px;
-  /* outline: 1px solid orange; */
 }
 
 .form__inputs-wrapper {
@@ -15,20 +14,20 @@
   flex-wrap: wrap;
 }
 
-.form__inputs-wrapper_left {
+.form__inputs-wrapper--left {
   display: flex;
   flex-direction: column;
   margin-right: 11px;
   width: 235px;
 }
 
-.form__inputs-wrapper_right {
+.form__inputs-wrapper--right {
   display: flex;
   flex-direction: column;
   width: 235px;
 }
 
-.form .form__input_large {
+.form .form__input--large {
   width: 481.45px;
   height: 75px;
 }
@@ -77,6 +76,6 @@
   cursor: pointer;
 }
 
-.form__btn_save {
+.form__btn--save {
   margin-right: 11px;
 }

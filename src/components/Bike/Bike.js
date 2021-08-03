@@ -11,7 +11,7 @@ export default function Bike({ bikeInfo }) {
   const dispatch = useDispatch();
   const { name, type, color, id, price, status: bikeStatus } = bikeInfo;
 
-  const [status, setStatus] = useState(bikeStatus || 'Available');
+  const [status, setStatus] = useState(bikeStatus || STATUS_TYPES.AVAILABLE);
 
   const handleOptionChange = e => {
     setStatus(e.target.value);
@@ -27,21 +27,21 @@ export default function Bike({ bikeInfo }) {
 
   return (
     <div
-      className={classnames('bike-list__item', {
-        'bike-list__item_available': status === STATUS_TYPES.AVAILABLE,
-        'bike-list__item_busy': status === STATUS_TYPES.BUSY,
-        'bike-list__item_unavailable': status === STATUS_TYPES.UNAVAILABLE,
+      className={classnames('bike', {
+        'bike--available': status === STATUS_TYPES.AVAILABLE,
+        'bike--busy': status === STATUS_TYPES.BUSY,
+        'bike--unavailable': status === STATUS_TYPES.UNAVAILABLE,
       })}
     >
-      <p className="bike-list__item__text">
+      <p className="bike__text">
         <span>{name}</span> - {type} ({color})
       </p>
-      <p className="bike-list__item__id">ID: {id}</p>
-      <div className="bike-list__item__status-wrapper">
-        <p className="bike-list__item__text">Status:</p>
+      <p className="bike__id">ID: {id}</p>
+      <div className="bike__status-wrapper">
+        <p className="bike__text">Status:</p>
 
         <select
-          className="bike-list__item__select"
+          className="bike__select"
           id={id}
           value={status}
           onChange={handleOptionChange}
@@ -50,9 +50,7 @@ export default function Bike({ bikeInfo }) {
           <option value="Busy">Busy</option>
           <option value="Unavailable">Unavailable</option>
         </select>
-        <p className="bike-list__item__price">
-          {Number(price).toFixed(2)} UAH/hr.
-        </p>
+        <p className="bike__price">{Number(price).toFixed(2)} UAH/hr.</p>
       </div>
       <CloseBtn deleteBike={deleteBike} />
     </div>
