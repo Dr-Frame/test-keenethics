@@ -31,8 +31,11 @@ export default function Form() {
   } = INPUT_ERROR_MESSAGES;
 
   const onSubmit = data => {
-    data.status = STATUS_TYPES.AVAILABLE;
-    dispatch(bikesAction.addBike(data));
+    const newBike = {
+      ...data,
+      status: STATUS_TYPES.AVAILABLE,
+    };
+    dispatch(bikesAction.addBike(newBike));
     reset();
   };
 
@@ -41,12 +44,9 @@ export default function Form() {
   };
 
   const isIdUnique = id => {
-    let idArr = [];
-    bikesDatabase.forEach(bike => {
-      idArr.push(bike.id);
-    });
+    const isIdRepeat = bikesDatabase.find(bike => bike.id === id);
 
-    return idArr.includes(id) === false;
+    return isIdRepeat ? false : true;
   };
 
   return (

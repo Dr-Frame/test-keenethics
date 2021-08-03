@@ -1,8 +1,8 @@
 import './CloseBtn.scss';
 
-export default function CloseBtn({ deleteBike }) {
+export default function CloseBtn({ onClick }) {
   return (
-    <button className="btn-close" type="button" onClick={deleteBike}>
+    <button className="btn-close" type="button" onClick={onClick}>
       <svg
         width="10"
         height="10"

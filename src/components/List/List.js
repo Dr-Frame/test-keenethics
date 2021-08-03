@@ -8,7 +8,7 @@ export default function List() {
 
   return (
     <div className="bikes-info">
-      {bikesDatabase.length !== 0 ? (
+      {bikesDatabase.length ? (
         <ul className="bike-list">
           {bikesDatabase.map(bike => {
             return (
@@ -19,7 +19,7 @@ export default function List() {
           })}
         </ul>
       ) : (
-        <p className="bike-list--empty">
+        <p className="bike-list-empty">
           Your bike garage is empty! Please add one via form in the right!
         </p>
       )}

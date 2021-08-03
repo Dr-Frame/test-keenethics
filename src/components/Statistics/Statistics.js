@@ -20,7 +20,6 @@ export default function Statistics() {
       } else if (bike.status === STATUS_TYPES.BUSY) {
         acc.busy++;
       }
-      /* acc[bike.status]++ */
       return acc;
     },
     { availalble: 0, busy: 0 },

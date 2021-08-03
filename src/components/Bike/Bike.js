@@ -1,29 +1,24 @@
 import './Bike.scss';
-import { useState } from 'react';
 import classnames from 'classnames';
 import bikesAction from '../../redux/bikes/bikes-action';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { STATUS_TYPES } from '../../constants/statusTypes';
 import CloseBtn from '../CloseBtn';
 
 export default function Bike({ bikeInfo }) {
   const dispatch = useDispatch();
-  const { name, type, color, id, price, status: bikeStatus } = bikeInfo;
+  const { name, type, color, id, price, status } = bikeInfo;
 
-  const [status, setStatus] = useState(bikeStatus || STATUS_TYPES.AVAILABLE);
-
-  const handleOptionChange = e => {
-    setStatus(e.target.value);
+  const handleStatusChange = e => {
+    const changedStatus = e.target.value;
+    dispatch(bikesAction.changeBikeStatus(changedStatus, id));
   };
 
-  const deleteBike = () => {
+  const handleDeleteBike = () => {
     dispatch(bikesAction.deleteBike(id));
   };
 
-  useEffect(() => {
-    dispatch(bikesAction.addBikeStatus(status, id));
-  }, [dispatch, status, id]);
+  const bikePrice = Number(price).toFixed(2);
 
   return (
     <div
@@ -44,15 +39,15 @@ export default function Bike({ bikeInfo }) {
           className="bike__select"
           id={id}
           value={status}
-          onChange={handleOptionChange}
+          onChange={handleStatusChange}
         >
           <option value="Available">Available</option>
           <option value="Busy">Busy</option>
           <option value="Unavailable">Unavailable</option>
         </select>
-        <p className="bike__price">{Number(price).toFixed(2)} UAH/hr.</p>
+        <p className="bike__price">{bikePrice} UAH/hr.</p>
       </div>
-      <CloseBtn deleteBike={deleteBike} />
+      <CloseBtn onClick={handleDeleteBike} />
     </div>
   );
 }

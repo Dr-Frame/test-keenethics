@@ -10,7 +10,7 @@ function App() {
       <Header />
       <div className="container container--flex">
         <List />
-        <div className="wrapper">
+        <div>
           <Form />
           <Statistics />
         </div>
