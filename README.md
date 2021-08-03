@@ -1,3 +1,5 @@
+This site available on: https://dr-frame-admin-bike-booking.netlify.app/
+
 This test task was performed by Remenyuk Vladislav. To start development mode,
 firstly you shoud use:
 
